@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://www.shoelace.style/source/css/shoelace.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-  <title>Note Pad</title>
-</head>
-<body>
-<main class= "mar-md" id="note-form">
-  <h1>Note Pad</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+    rel="stylesheet"
+    href="https://www.shoelace.style/source/css/shoelace.css"
+  />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.1/moment.min.js" integrity="sha256-epLhbUf8psw8cUHu0hJ5eabk6CPexNJpCbsc0q4ougI=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <title>Note Pad</title>
+  </head>
+  <body>
+    <form class="mar-md" id="note-form">
+      <h1>Note Pad</h1>
 
-  <div class="mar-t-md">
-    <button type="submit">New Note</button>
-  </div>
+      <div class="mar-t-md">
+        <input type="text" id="notes-text" />
+      </div>
 
-  <div class="mar-t-md">
-    <input type="text">
-  </div>
-</main>
-</body>
+      <div class="mar-t-md">
+        <button type="submit">New Note</button>
+      </div>
+    </form>
+  </body>
 </html>
