@@ -21,11 +21,8 @@ function createNewNote(noteText) {
   fetch("http://localhost:3000/notes/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      body: noteText,
-      done: false,
-      created: moment().format(),
-    }),
+    body: JSON.stringify({item: noteText, done: false, created: moment().format()
+    })
   })
     .then((response) => response.json)
     .then((data) => console.log(data));
@@ -44,13 +41,14 @@ function renderNote() {
       for (let item of data) {
           let listItem = document.createElement("li");
           listItem.dataset.id = item.id
-          listItem.innerText = item.item
-       
+          listItem.innerText = item.body
+          notes.appendChild(listItem)
+       //what is item.item?
           let deletePage = document.createElement("span")
           deletePage.id = "delete";
           deletePage.classList.add("fa", "fa-trash", "mar-l-xs")
           listItem.appendChild(deletePage);
-          notes.appendChild(listItem);
+        //   notes.appendChild(listItem);
       }
       noteList.appendChild (notes)
     })
