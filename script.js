@@ -1,7 +1,7 @@
 //identify form
 let noteForm = document.querySelector("#note-form");
 // console.log(noteForm);
-let noteList = document.querySelector('#notes')
+let noteList = document.querySelector("#notes");
 
 //event listener for new note button
 noteForm.addEventListener("submit", function (event) {
@@ -21,8 +21,11 @@ function createNewNote(noteText) {
   fetch("http://localhost:3000/notes/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({item: noteText, done: false, created: moment().format()
-    })
+    body: JSON.stringify({
+      body: noteText,
+      done: false,
+      created: moment().format(),
+    }),
   })
     .then((response) => response.json)
     .then((data) => console.log(data));
@@ -36,22 +39,31 @@ function renderNote() {
     .then((response) => response.json())
     .then(function (data) {
       console.log(data);
-    //   //add note to DOM from server
-      let notes = document.createElement("ul")
+      //   //add note to DOM from server
+      let notes = document.createElement("ul");
       for (let item of data) {
-          let listItem = document.createElement("li");
-          listItem.dataset.id = item.id
-          listItem.innerText = item.body
-          notes.appendChild(listItem)
-       //what is item.item?
-          let deletePage = document.createElement("span")
-          deletePage.id = "delete";
-          deletePage.classList.add("fa", "fa-trash", "mar-l-xs")
-          listItem.appendChild(deletePage);
-        //   notes.appendChild(listItem);
+        let listItem = document.createElement("li");
+        listItem.dataset.id = item.id;
+        listItem.innerText = item.body;
+        //what is item.item?
+        let deletePage = document.createElement("span");
+        deletePage.id = "delete";
+        deletePage.classList.add("fa", "fa-trash", "mar-l-xs");
+        listItem.appendChild(deletePage);
+        notes.appendChild(listItem);
       }
-      noteList.appendChild (notes)
-    })
+      noteList.appendChild(notes);
+    });
 }
+renderNote()
 
-renderNote ()
+noteList.addEventListener("click", function (event) {
+    console.log(event.target)
+    if (event.target.matches("#delete")){
+        console.log("DELETE")
+    }
+})
+
+
+
+
